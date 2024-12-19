@@ -239,6 +239,7 @@ declare module 'widget-operation' {
          * @description: UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再对这些控件进行点击、长按等动作。
          */
         class UiSelector {
+            visibleToUser(): this
             /**
              * @description: 指定选择器的搜索算法。广度优先在控件所在层次较低时，或者布局的层次不多时，通常能更快找到控件。
              * @param {string} algorithm 搜索算法（默认为 `DFS` ），可选的值为:

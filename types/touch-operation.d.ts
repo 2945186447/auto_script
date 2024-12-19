@@ -31,7 +31,7 @@ declare module 'touch-operation' {
          * @param {number} x 要点击的横坐标。
          * @param {number} y 要点击的纵坐标。
          */
-        function click(x: number, y: number): void;
+        function click(x: number, y: number): boolean;
 
         /**
          * @description: 模拟长按坐标 (x, y) , 并返回是否成功。只有在长按执行完成（大约 600 毫秒）时脚本才会继续执行。一般而言，只有长按过程中被其他事件中断（例如用户自行点击）才会长按失败。
