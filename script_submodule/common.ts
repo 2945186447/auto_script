@@ -7,7 +7,6 @@ export function clickWidget(
         widget,
         timeout
     }: clickWidget) {
-
     return new Promise<boolean>((resolve, reject) => {
         try {
             const _type = type || 'coordinate'
@@ -30,8 +29,5 @@ export function clickWidget(
             reject(error)
         }
     })
-
-
-
 }
 

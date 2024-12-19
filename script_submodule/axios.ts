@@ -1,18 +1,12 @@
 
 
 const defaultContentType = "application/json";
-const baseUrl = ''
-
-
 function serializeParams(params: Record<string, any>): string {
     var queryString: string[] = [];
-
     for (var key in params) {
         if (params.hasOwnProperty(key)) {
             var value = params[key];
-
             if (value === void 0 || value === null) continue;
-
             if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
                 queryString.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
             } else if (Array.isArray(value)) {
@@ -48,13 +42,7 @@ const axios = ({ url, method, data, params, headers }: axios) => {
             options['body'] = JSON.stringify(data);
         }
     }
-    // const res = http.request(_url, options)
-
-    const responseObj = {
-        data: { a: '123' },
-    }
-    console.log(responseObj);
-
+    const res = http.request(_url, options)
 }
 
 

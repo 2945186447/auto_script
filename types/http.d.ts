@@ -232,7 +232,7 @@ declare module 'http' {
          * 
          * [HTTP Headers]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers
          */
-        headers: object;
+        headers?: object;
 
         /**
          * @description: HTTP 请求方法。
@@ -254,7 +254,7 @@ declare module 'http' {
          * 
          * [Content-Type]: https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Type
          */
-        contentType: string;
+        contentType?: string;
 
         // TODO: 明确函数定义。
         /**
@@ -262,7 +262,7 @@ declare module 'http' {
          * 
          * [BufferedSink]: https://github.com/square/okio/blob/master/okio/src/main/java/okio/BufferedSink.java
          */
-        body: string | ByteArray | Function;
+        body?: string | ByteArray | Function;
     }
 
     // TODO: 检查多文件传输的情况
