@@ -792,101 +792,10 @@ function init() {
 
   setScreenMetrics(1080, 2400);
 }
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
-;// CONCATENATED MODULE: ./script_submodule/axios.ts
-
-
-var __assign = undefined && undefined.__assign || function () {
-  __assign = Object.assign || function (t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-
-      for (var p in s) {
-        if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-    }
-
-    return t;
-  };
-
-  return __assign.apply(this, arguments);
-};
-
-var defaultContentType = "application/json";
-
-function serializeParams(params) {
-  var queryString = [];
-
-  for (var key in params) {
-    if (params.hasOwnProperty(key)) {
-      var value = params[key];
-      if (value === void 0 || value === null) continue;
-
-      if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
-        queryString.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
-      } else if (Array.isArray(value)) {
-        queryString.push(encodeURIComponent(key) + "=" + encodeURIComponent(value.join(",")));
-      } else if (_typeof(value) === "object") {
-        queryString.push(encodeURIComponent(key) + "=" + encodeURIComponent(JSON.stringify(value)));
-      }
-    }
-  }
-
-  return queryString.join("&");
-}
-
-var axios = function axios(_a) {
-  var url = _a.url,
-      method = _a.method,
-      data = _a.data,
-      params = _a.params,
-      headers = _a.headers;
-
-  var _headers = __assign({
-    "Content-Type": defaultContentType,
-    "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/237.84.2.178 Safari/537.36"
-  }, headers);
-
-  var _params_data = params && serializeParams(params);
-
-  var options = {
-    method: method,
-    headers: _headers
-  };
-
-  var _url = _params_data ? url + '?' + _params_data : url;
-
-  if (method === 'POST' || method === 'PUT') {
-    if (_headers['Content-Type'] === 'application/x-www-form-urlencoded') {
-      options['body'] = data && serializeParams(data);
-    } else {
-      options['body'] = JSON.stringify(data);
-    }
-  }
-
-  var res = http.request(_url, options);
-};
-
-/* harmony default export */ const script_submodule_axios = (axios);
 ;// CONCATENATED MODULE: ./src/test/main.ts
 
-
+var text_01 = hamibot.env.text_01;
 init();
-script_submodule_axios({
-  url: 'https://www.baidu.com',
-  method: 'GET',
-  headers: {
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/237.84.2.178 Safari/537.36'
-  }
-});
+toast(text_01);
 /******/ })()
 ;
