@@ -28,5 +28,65 @@
         "type": "checkbox",
         "name": "treasure_hunting",
         "default": false
+    },
+    {
+        "label": "去蚂蚁庄园逛一逛",
+        "type": "checkbox",
+        "name": "ant_farm",
+        "default": false
+    },
+    {
+        "label": "买到或卖出一件宝贝",
+        "type": "checkbox",
+        "name": "buy_or_sell_treasure",
+        "default": false
+    },
+    {
+        "label": "看视频奖励",
+        "type": "checkbox",
+        "name": "watch_ad",
+        "default": false
+    },
+    {
+        "label": "去支付宝农场领水果",
+        "type": "checkbox",
+        "name": "alipay_farm",
+        "default": false
+    },
+    {
+        "label": "去支付宝领积分",
+        "type": "checkbox",
+        "name": "alipay_points",
+        "default": false
+    },
+    {
+        "label": "去蚂蚁森林逛一逛",
+        "type": "checkbox",
+        "name": "ant_forest",
+        "default": false
+    },
+    {
+        "label": "去快手极速版领红包",
+        "type": "checkbox",
+        "name": "kuaishou",
+        "default": false
+    },
+    {
+        "label": "去逛一逛芭芭农场",
+        "type": "checkbox",
+        "name": "baba_farm",
+        "default": false
+    },
+    {
+        "label": "去中国移动领话费",
+        "type": "checkbox",
+        "name": "mobile_sign",
+        "default": false
+    },
+    {
+        "label": "去淘宝签到领红包",
+        "type": "checkbox",
+        "name": "taobao_sign",
+        "default": false
     }
 ]
