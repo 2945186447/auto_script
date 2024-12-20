@@ -60,13 +60,22 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
+            // 设置超时时间（毫秒）
+            const timeout = 3 * 60 * 1000;
+            const startTime = Date.now();
             while (true) {
+                // 检查是否超时
+                if (Date.now() - startTime > timeout) {
+                    hamibot.postMessage('执行超时 => 去蚂蚁庄园逛一逛');
+                    break;
+                }
                 if (text("蚂蚁庄园").exists()) {
                     console.log("出现");
                     randomSleep(3000, 5000);
                     app.launchApp("闲鱼");
                     randomSleep();
                     back();
+                    hamibot.postMessage('执行成功 => 去蚂蚁庄园逛一逛');
                     break;
                 }
                 randomSleep()
@@ -103,13 +112,22 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
+            // 设置超时时间（毫秒）
+            const timeout = 3 * 60 * 1000;
+            const startTime = Date.now();
             while (true) {
+                // 检查是否超时
+                if (Date.now() - startTime > timeout) {
+                    hamibot.postMessage('执行超时 => 去支付宝领积分');
+                    break;
+                }
                 if (text("会员签到赚积分").exists()) {
                     console.log("出现");
                     randomSleep(3000, 5000);
                     app.launchApp("闲鱼");
                     randomSleep();
                     back();
+                    hamibot.postMessage('执行成功 => 去支付宝领积分');
                     break;
                 }
                 randomSleep()
@@ -122,13 +140,22 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
+            // 设置超时时间（毫秒）
+            const timeout = 3 * 60 * 1000;
+            const startTime = Date.now();
             while (true) {
+                // 检查是否超时
+                if (Date.now() - startTime > timeout) {
+                    hamibot.postMessage('执行超时 => 去蚂蚁森林逛一逛');
+                    break;
+                }
                 if (text("蚂蚁森林").exists()) {
                     console.log("出现");
                     randomSleep(3000, 5000);
                     app.launchApp("闲鱼");
                     randomSleep();
                     back();
+                    hamibot.postMessage('执行成功 => 去蚂蚁森林逛一逛');
                     break;
                 }
                 randomSleep()
@@ -157,13 +184,22 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
+            // 设置超时时间（毫秒）
+            const timeout = 3 * 60 * 1000;
+            const startTime = Date.now();
             while (true) {
+                // 检查是否超时
+                if (Date.now() - startTime > timeout) {
+                    hamibot.postMessage('执行超时 => 去中国移动领话费');
+                    break;
+                }
                 if (text("签到有礼").exists()) {
                     console.log("出现");
                     randomSleep(3000, 5000);
                     app.launchApp("闲鱼");
                     randomSleep();
                     back();
+                    hamibot.postMessage('执行成功 => 去中国移动领话费');
                     break;
                 }
                 randomSleep()
@@ -176,13 +212,22 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
+            // 设置超时时间（毫秒）
+            const timeout = 3 * 60 * 1000;
+            const startTime = Date.now();
             while (true) {
+                // 检查是否超时
+                if (Date.now() - startTime > timeout) {
+                    hamibot.postMessage('执行超时 => 去淘宝签到领红包');
+                    break;
+                }
                 if (text("立即提现").exists()) {
                     console.log("出现");
                     randomSleep(3000, 5000);
                     app.launchApp("闲鱼");
                     randomSleep();
                     back();
+                    hamibot.postMessage('执行成功 => 去淘宝签到领红包');
                     break;
                 }
                 randomSleep()
@@ -231,6 +276,7 @@ try {
                 }
             })
             randomSleep(3000, 5000)
+            hamibot.exit();
             break;
         }
         dialog_close()
