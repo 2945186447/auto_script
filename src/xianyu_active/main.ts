@@ -60,7 +60,6 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
-            randomSleep(8000, 9000)
             while (true) {
                 if (text("蚂蚁庄园").exists()) {
                     console.log("出现");
@@ -104,7 +103,6 @@ const task_map = [
         callback: (widget: UiObject) => {
             widget.click()
             randomSleep(8000, 9000)
-            randomSleep(8000, 9000)
             while (true) {
                 if (text("会员签到赚积分").exists()) {
                     console.log("出现");
@@ -123,7 +121,6 @@ const task_map = [
         run: ant_forest,
         callback: (widget: UiObject) => {
             widget.click()
-            randomSleep(8000, 9000)
             randomSleep(8000, 9000)
             while (true) {
                 if (text("蚂蚁森林").exists()) {
@@ -159,7 +156,18 @@ const task_map = [
         run: mobile_sign,
         callback: (widget: UiObject) => {
             widget.click()
-            randomSleep(3000, 5000)
+            randomSleep(8000, 9000)
+            while (true) {
+                if (text("签到有礼").exists()) {
+                    console.log("出现");
+                    randomSleep(3000, 5000);
+                    app.launchApp("闲鱼");
+                    randomSleep();
+                    back();
+                    break;
+                }
+                randomSleep()
+            }
         }
     },
     {
@@ -167,7 +175,18 @@ const task_map = [
         run: taobao_sign,
         callback: (widget: UiObject) => {
             widget.click()
-            randomSleep(3000, 5000)
+            randomSleep(8000, 9000)
+            while (true) {
+                if (text("立即提现").exists()) {
+                    console.log("出现");
+                    randomSleep(3000, 5000);
+                    app.launchApp("闲鱼");
+                    randomSleep();
+                    back();
+                    break;
+                }
+                randomSleep()
+            }
         }
     }
 ]
