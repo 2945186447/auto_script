@@ -1,0 +1,32 @@
+[
+    {
+        "label": "显示控制台(需要悬浮窗权限)",
+        "type": "checkbox",
+        "name": "_SHOW_CONSOLE",
+        "default": true
+    },
+    {
+        "label": "通过桌面访问闲鱼币",
+        "type": "checkbox",
+        "name": "desktop_coin",
+        "default": false
+    },
+    {
+        "label": "参与一次拼手气红包",
+        "type": "checkbox",
+        "name": "red_envelope",
+        "default": false
+    },
+    {
+        "label": "发布一件新宝贝",
+        "type": "checkbox",
+        "name": "release_treasure",
+        "default": false
+    },
+    {
+        "label": "好物夺宝试试手气",
+        "type": "checkbox",
+        "name": "treasure_hunting",
+        "default": false
+    }
+]

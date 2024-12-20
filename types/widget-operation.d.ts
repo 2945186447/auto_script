@@ -124,7 +124,7 @@ declare module 'widget-operation' {
              * - 如果系统是 Android5.0 以下，则始终返回当前活跃的窗口的布局根元素的数组
              * 
              */
-            const windowRoots: UiObject | null;
+            const windowRoots: | null;
 
             /**
              * @description: 设置窗口过滤器。这个过滤器可以决定哪些窗口是目标窗口，并影响选择器的搜索。选择器默认是在当前活跃的窗口中搜索，不会搜索诸如悬浮窗、状态栏之类的，使用 `WindowFilter` 则可以控制搜索的窗口。
@@ -724,6 +724,8 @@ declare module 'widget-operation' {
          * @description: `UiObject` 表示一个控件，可以通过这个对象获取到控件的属性，也可以对控件进行点击、长按等操作。获取一个 `UiObject` 通常通过选择器的 `findOne()` , `findOnce()` 等函数，也可以通过 `UiCollection` 来获取，或者通过 `UiObject.child()` , `UiObject.parent()` 等函数来获取一个控件的子控件或父控件。
          */
         class UiObject {
+            indexInParent(): number;
+            desc(): string;
             /**
              * @description: 点击该控件，并返回是否点击成功。如果该函数返回 `false` ，可能是该控件不可点击（ `clickable` 为 `false` ），当前界面无法响应该点击等。
              * @return {boolean} 操作是否成功。
