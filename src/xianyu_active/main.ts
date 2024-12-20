@@ -231,9 +231,7 @@ try {
                 }
             })
             randomSleep(3000, 5000)
-            if (!text("去完成").visibleToUser().findOne(1000)) {
-                break;
-            }
+            break;
         }
         dialog_close()
         randomSleep()
