@@ -12,7 +12,6 @@ export function _click(
         const _type = type || 'coordinate'
         const _timeout = timeout || 1000
         const _widget = widget.findOne(_timeout)
-        console.log(_widget);
         if (_widget) {
             if (_type === 'coordinate') {
                 const x = randomInteger(_widget.bounds().centerX() - 3, _widget.bounds().centerX() + 3)
@@ -67,14 +66,42 @@ export function randomSleep(min: number = 1000, max: number = 3000): void {
     return sleep(randomInteger(min, max))
 }
 
-export function wakeUpHonor(timeout = 30000): void {
+export function wakeUpHonor(): boolean {
     device.wakeUpIfNeeded()
-    device.keepScreenOn(timeout)
-    textMatches(/([01]?\d|2[0-3]):([0-5]\d)/).visibleToUser().waitFor()
-    randomSleep()
-    _swipe("up", undefined, '0.2-0.8', 0.6)
-    text("紧急呼叫").visibleToUser().waitFor()
-    _click(text("1")); _click(text("3")); _click(text("4"));
-    _click(text("6")); _click(text("7")); _click(text("9"))
+    const clock = textMatches(/([01]?\d|2[0-3]):([0-5]\d)/).visibleToUser().findOne(1 * 60 * 1000)
+    if (clock) {
+        randomSleep()
+        _swipe("up", undefined, '0.3-0.7', 1)
+        if (text("紧急呼叫").visibleToUser().findOne(1 * 60 * 1000)) {
+            _click(text("1")); _click(text("3")); _click(text("4"));
+            _click(text("6")); _click(text("7")); _click(text("9"))
+            return true
+        }
+        return false
+    }
+    return false
 }
 
+export function clearRecent(): boolean {
+    recents()
+    const clearbox = idContains("clearbox").visibleToUser().findOne(30 * 1000)
+    if (clearbox) {
+        randomSleep(1000, 1500)
+        return _click(idContains("clearbox")) || false
+    }
+    return false && randomSleep(1000, 1500)
+}
+
+export function stopApp(packageName: string) {
+    app.openAppSetting(packageName);
+    const stopBnt = text("强行停止").visibleToUser().findOne(30 * 1000)
+    if (!stopBnt) return false;
+    randomSleep(500, 1000)
+    stopBnt.click()
+    const confirmStopMsg = textContains("导致异常").visibleToUser().findOne(30 * 1000)
+    if (!confirmStopMsg) return true;
+    randomSleep(500, 1000)
+    const res = text("强行停止").visibleToUser().findOne(30 * 1000)?.click() || false
+    clearRecent()
+    return res
+}
