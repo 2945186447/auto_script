@@ -88,5 +88,47 @@
         "type": "checkbox",
         "name": "taobao_sign",
         "default": false
+    },
+    {
+        "label": "浏览指定频道好物",
+        "type": "checkbox",
+        "name": "channel_goods",
+        "default": false
+    },
+    {
+        "label": "搜一搜推荐商品",
+        "type": "checkbox",
+        "name": "search_products",
+        "default": false
+    },
+    {
+        "label": "搜一搜喜欢的商品",
+        "type": "checkbox",
+        "name": "like_products",
+        "default": false
+    },
+    {
+        "label": "去浏览全新好物",
+        "type": "checkbox",
+        "name": "browse_newgoods",
+        "default": false
+    },
+    {
+        "label": "薅羊毛赚话费",
+        "type": "checkbox",
+        "name": "sheep_huafei",
+        "default": false
+    },
+    {
+        "label": "去饿了么果园领水果",
+        "type": "checkbox",
+        "name": "elema_apple",
+        "default": false
+    },
+    {
+        "label": "去看一看闲鱼直播",
+        "type": "checkbox",
+        "name": "xianyu_live",
+        "default": true
     }
 ]

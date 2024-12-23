@@ -12,7 +12,6 @@ export function _click(
         const _type = type || 'coordinate'
         const _timeout = timeout || 1000
         const _widget = widget.findOne(_timeout)
-        console.log(_widget);
         if (_widget) {
             if (_type === 'coordinate') {
                 const x = randomInteger(_widget.bounds().centerX() - 3, _widget.bounds().centerX() + 3)
