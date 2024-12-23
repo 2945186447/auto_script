@@ -1,6 +1,6 @@
 
 
-export function randomInteger(min: number = 1000, max: number = 3000) {
+export function randomInteger(min: number = 1000, max: number = 3000): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 export function _click(
@@ -63,7 +63,18 @@ export function _swipe(
     randomSleep(1000, 2000)
 }
 
-export function randomSleep(min: number = 1000, max: number = 3000) {
+export function randomSleep(min: number = 1000, max: number = 3000): void {
     return sleep(randomInteger(min, max))
+}
+
+export function wakeUpHonor(timeout = 30000): void {
+    device.wakeUpIfNeeded()
+    device.keepScreenOn(timeout)
+    textMatches(/([01]?\d|2[0-3]):([0-5]\d)/).visibleToUser().waitFor()
+    randomSleep()
+    _swipe("up", undefined, '0.2-0.8', 0.6)
+    text("紧急呼叫").visibleToUser().waitFor()
+    _click(text("1")); _click(text("3")); _click(text("4"));
+    _click(text("6")); _click(text("7")); _click(text("9"))
 }
 
