@@ -1,6 +1,6 @@
 
 
-export function randomInteger(min: number = 1000, max: number = 3000) {
+export function randomInteger(min: number = 1000, max: number = 3000): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 export function _click(
@@ -62,7 +62,66 @@ export function _swipe(
     randomSleep(1000, 2000)
 }
 
-export function randomSleep(min: number = 1000, max: number = 3000) {
+export function randomSleep(min: number = 1000, max: number = 3000): void {
     return sleep(randomInteger(min, max))
 }
 
+export function wakeUpHonor(password: string): boolean {
+    if (device.isScreenOn()) return true
+    device.wakeUpIfNeeded()
+    const clock = textMatches(/([01]?\d|2[0-3]):([0-5]\d)/).visibleToUser().findOne(30 * 1000)
+    if (clock) {
+        randomSleep()
+        _swipe("up", undefined, '0.3-0.7', 1)
+        if (text("紧急呼叫").visibleToUser().findOne(30 * 1000)) {
+            for (let i = 0; i < password.split("").length; i++) {
+                _click(text(password[i]));
+            }
+            return true
+        }
+        return false
+    }
+    return false
+}
+
+export function clearRecent(): boolean {
+    recents()
+    const clearbox = idContains("clearbox").visibleToUser().findOne(30 * 1000)
+    if (clearbox) {
+        randomSleep(1000, 1500)
+        return _click(idContains("clearbox")) || false
+    }
+    return false && randomSleep(1000, 1500)
+}
+
+export function stopApp(packageName: string) {
+    app.openAppSetting(packageName);
+    const stopBnt = text("强行停止").visibleToUser().findOne(30 * 1000)
+    if (!stopBnt) return false;
+    randomSleep(500, 1000)
+    stopBnt.click()
+    const confirmStopMsg = textContains("导致异常").visibleToUser().findOne(30 * 1000)
+    if (!confirmStopMsg) return true;
+    randomSleep(500, 1000)
+    const res = text("强行停止").visibleToUser().findOne(30 * 1000)?.click() || false
+    clearRecent()
+    return res
+}
+
+export function wx_push(title: string, content: string) {
+    try {
+        const token = "YFQjdi/0R49GneQCyGSKkiMHfbsAXfhRIcZfSEjaczbQmfaaoxy+v23UnZXoqTpbJ1J06cYy1/3/1vWl8BvS/ZDCtSGoWG8koaFxwrgkmU+v8ofPjdIcpuivMmx4LG4V+6fE9BZtrVQgl9uN/mH7+MwhTE/3MenwPhievdwe0PY="
+        const res: any = http.postJson("http://175.178.41.25:9317/message_push", {
+            content,
+            title,
+            token
+        }).body.json()
+        toast(res.msg)
+        if (res.code == 200) {
+            return true
+        }
+        return false
+    } catch (error) {
+        return false
+    }
+}
