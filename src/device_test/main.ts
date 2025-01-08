@@ -1,16 +1,28 @@
-import { init } from "../../lib/init";
-import { randomSleep, wx_push } from "../../script_submodule/common";
+//@ts-nocheck
+function randomInteger(min: number = 1000, max: number = 3000): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function clickIfWidgetExists(widget: UiObject, sleep: number = 1000): boolean {
+    try {
+        if (widget.visibleToUser()) {
+            let x = randomInteger(widget.bounds().centerX() - 3, widget.bounds().centerX() + 3)
+            let y = randomInteger(widget.bounds().centerY() - 3, widget.bounds().centerY() + 3)
+            if (widget.clickable() && widget.click()) {
+                return true
+            }
+            if (click(x, y)) {
+                console.log("坐标点击", x, y);
 
-init();
+                return true
+            }
+        }
+    }
+    catch (error) { }
+    return false;
+}
 
-wx_push(
-    'autoscript',
-    `
-    <h5>执行成功</h5>
-    <p>去中国移动领话费</p>
-    
-    `
-)
-
-randomSleep(6000, 8000)
-
+if (clickIfWidgetExists(desc("Attach").visibleToUser().findOne(5000))) {
+    clickIfWidgetExists(text("Gallery").visibleToUser().findOne(10000))
+    clickIfWidgetExists(descContains("Photo, date").visibleToUser().findOne(10000))
+    clickIfWidgetExists(desc("Confirm selection").visibleToUser().findOne(10000))
+}

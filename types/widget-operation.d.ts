@@ -239,6 +239,7 @@ declare module 'widget-operation' {
          * @description: UiSelector 即选择器，用于通过各种条件选取屏幕上的控件，再对这些控件进行点击、长按等动作。
          */
         class UiSelector {
+            indexInParent(index: number): this
             visibleToUser(): this
             /**
              * @description: 指定选择器的搜索算法。广度优先在控件所在层次较低时，或者布局的层次不多时，通常能更快找到控件。
@@ -749,6 +750,7 @@ declare module 'widget-operation' {
              * @return {boolean} 操作是否成功。
              */
             setText(text: string): boolean;
+            getText(): string;
 
             /**
              * @description: 对输入框文本的选中内容进行复制。可以通过 `setSelection()` 函数来设置输入框选中的内容。

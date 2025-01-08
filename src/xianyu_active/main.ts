@@ -115,7 +115,7 @@ const task_map = [
                     _click(textContains("点击"))
                 }
                 if (textContains("滑动浏览").exists()) {
-                    _swipe("up")
+                    _swipe("up", undefined, '0.2-0.8', 0.3)
                 }
                 if (textContains("逛逛宝贝吧~").exists()) {
                     back()
@@ -388,7 +388,7 @@ const task_map = [
                     hamibot.postMessage('执行成功 => 浏览指定频道好物');
                     break
                 }
-                _swipe("up")
+                _swipe("up", undefined, '0.2-0.8', 0.3)
                 randomSleep()
             }
 
@@ -413,7 +413,7 @@ const task_map = [
                     _click(textContains("点击"))
                 }
                 if (textContains("滑动浏览").exists()) {
-                    _swipe("up")
+                    _swipe("up", undefined, '0.2-0.8', 0.3)
                 }
                 if (textContains("逛逛宝贝吧~").exists()) {
                     back()
@@ -444,7 +444,7 @@ const task_map = [
                     break;
                 }
                 if (textContains("滑动浏览").exists()) {
-                    _swipe("up")
+                    _swipe("up", undefined, '0.2-0.8', 0.3)
                 }
                 else {
                     back()
@@ -472,7 +472,7 @@ const task_map = [
                     break;
                 }
                 if (textContains("滑动浏览").exists()) {
-                    _swipe("up")
+                    _swipe("up", undefined, '0.2-0.8', 0.3)
                 }
                 else {
                     back()
@@ -522,7 +522,7 @@ try {
         }
         if (idContains("tab_title").text("我的").exists()) {
             _click(idContains("tab_title").text("我的"))
-            _swipe("up")
+            _swipe("up", undefined, '0.2-0.8', 0.3)
         }
         if (descContains("免费加曝光").exists()) {
             const v1 = descContains("免费加曝光").findOne(1000)

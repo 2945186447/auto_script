@@ -1,6 +1,11 @@
 {
     "fileMark": {
-        "configFile": "src/test/config.json",
-        "scriptFile": "dist/test.js"
+        "scriptFile": "dist/tiktok_slider.js"
+    },
+    "name": "zhuan_mi",
+    "scriptId": "677c8a0cd22b111f8b9e542f",
+    "executeRobot": {
+        "_id": "677ddfb8563b5ef63a033c6f",
+        "name": "IQOO"
     }
 }

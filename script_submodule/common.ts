@@ -13,6 +13,34 @@ export function _click(
         const _timeout = timeout || 1000
         const _widget = widget.findOne(_timeout)
         if (_widget) {
+            const _widgetText = _widget.getText()
+            if (_type === 'coordinate') {
+                if (_widgetText) {
+                    console.log("点击文字：" + _widgetText);
+                }
+                const x = randomInteger(_widget.bounds().centerX() - 3, _widget.bounds().centerX() + 3)
+                const y = randomInteger(_widget.bounds().centerY() - 3, _widget.bounds().centerY() + 3)
+                return click(x, y) && randomSleep()
+            }
+            else {
+                console.log("点击文字：" + _widgetText);
+                return _widget.click() && randomSleep()
+            }
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    return false && randomSleep()
+}
+
+export function _ubclick(
+    widget: UiObject | null,
+    type: 'clickable' | 'coordinate' = 'coordinate',
+) {
+    try {
+        const _type = type || 'coordinate'
+        const _widget = widget
+        if (_widget) {
             if (_type === 'coordinate') {
                 const x = randomInteger(_widget.bounds().centerX() - 3, _widget.bounds().centerX() + 3)
                 const y = randomInteger(_widget.bounds().centerY() - 3, _widget.bounds().centerY() + 3)
@@ -124,4 +152,61 @@ export function wx_push(title: string, content: string) {
     } catch (error) {
         return false
     }
+}
+
+export function forceStopApp(pkgName: string) {
+    return executeShell("am force-stop " + pkgName);
+}
+
+export function executeShell(cmd: string | string[], rest: number = 100) {
+    if (rest === void 0) { rest = 100; }
+    try {
+        if (!cmd) {
+            return false;
+        }
+        if (typeof (cmd) == "string") {
+            var res = shell(cmd, true);
+            console.log("shell", cmd, String(res.result).replace(/[\r\n\s]/g, ""));
+            sleep(rest);
+            return res;
+        }
+        else if (typeof (cmd) == "object") {
+            cmd.forEach(function (item) {
+                var res = shell(item, true);
+                console.log("shell", item, String(res.result).replace(/[\r\n\s]/g, ""));
+                sleep(rest);
+            });
+            console.log("");
+            return true;
+        }
+    }
+    catch (error) {
+        console.log("executeShell:", JSON.stringify(error));
+    }
+    return false;
+}
+
+export function clearAppCache(pkgName: string) {
+    executeShell("rm -rf /data/data/" + pkgName + "/cache/*");
+    return true;
+}
+
+export function findNext(
+    currentSelector: UiSelector,
+    target: string
+) {
+    const current = currentSelector.visibleToUser().findOnce()
+    if (!current) return null
+    const pUiobject = current.parent()
+    if (!pUiobject) return null;
+    const pUiobjectList = pUiobject.children()
+    const currentIndex = current.indexInParent() + 1;
+    let targetUiobject: UiObject | null = null
+    for (let index = currentIndex; index < pUiobjectList.length; index++) {
+        if (pUiobjectList[index].getText() === target) {
+            targetUiobject = pUiobjectList[index];
+            break;
+        }
+    }
+    return targetUiobject;
 }
