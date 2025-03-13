@@ -1,6 +1,6 @@
 {
     "fileMark": {
-        "configFile": "src/test/config.json",
-        "scriptFile": "dist/test.js"
+        "configFile": "src/device_test/config.json",
+        "scriptFile": "dist/device_test.js"
     }
 }

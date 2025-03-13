@@ -1,0 +1,134 @@
+[
+    {
+        "label": "显示控制台(需要悬浮窗权限)",
+        "type": "checkbox",
+        "name": "_SHOW_CONSOLE",
+        "default": true
+    },
+    {
+        "label": "通过桌面访问闲鱼币",
+        "type": "checkbox",
+        "name": "desktop_coin",
+        "default": false
+    },
+    {
+        "label": "参与一次拼手气红包",
+        "type": "checkbox",
+        "name": "red_envelope",
+        "default": false
+    },
+    {
+        "label": "发布一件新宝贝",
+        "type": "checkbox",
+        "name": "release_treasure",
+        "default": false
+    },
+    {
+        "label": "好物夺宝试试手气",
+        "type": "checkbox",
+        "name": "treasure_hunting",
+        "default": false
+    },
+    {
+        "label": "去蚂蚁庄园逛一逛",
+        "type": "checkbox",
+        "name": "ant_farm",
+        "default": false
+    },
+    {
+        "label": "买到或卖出一件宝贝",
+        "type": "checkbox",
+        "name": "buy_or_sell_treasure",
+        "default": false
+    },
+    {
+        "label": "看视频奖励",
+        "type": "checkbox",
+        "name": "watch_ad",
+        "default": false
+    },
+    {
+        "label": "去支付宝农场领水果",
+        "type": "checkbox",
+        "name": "alipay_farm",
+        "default": false
+    },
+    {
+        "label": "去支付宝领积分",
+        "type": "checkbox",
+        "name": "alipay_points",
+        "default": false
+    },
+    {
+        "label": "去蚂蚁森林逛一逛",
+        "type": "checkbox",
+        "name": "ant_forest",
+        "default": false
+    },
+    {
+        "label": "去快手极速版领红包",
+        "type": "checkbox",
+        "name": "kuaishou",
+        "default": false
+    },
+    {
+        "label": "去逛一逛芭芭农场",
+        "type": "checkbox",
+        "name": "baba_farm",
+        "default": false
+    },
+    {
+        "label": "去中国移动领话费",
+        "type": "checkbox",
+        "name": "mobile_sign",
+        "default": false
+    },
+    {
+        "label": "去淘宝签到领红包",
+        "type": "checkbox",
+        "name": "taobao_sign",
+        "default": false
+    },
+    {
+        "label": "浏览指定频道好物",
+        "type": "checkbox",
+        "name": "channel_goods",
+        "default": false
+    },
+    {
+        "label": "搜一搜推荐商品",
+        "type": "checkbox",
+        "name": "search_products",
+        "default": false
+    },
+    {
+        "label": "搜一搜喜欢的商品",
+        "type": "checkbox",
+        "name": "like_products",
+        "default": false
+    },
+    {
+        "label": "去浏览全新好物",
+        "type": "checkbox",
+        "name": "browse_newgoods",
+        "default": false
+    },
+    {
+        "label": "薅羊毛赚话费",
+        "type": "checkbox",
+        "name": "sheep_huafei",
+        "default": false
+    },
+    {
+        "label": "去饿了么果园领水果",
+        "type": "checkbox",
+        "name": "elema_apple",
+        "default": false
+    },
+    {
+        "label": "去看一看闲鱼直播",
+        "type": "checkbox",
+        "name": "xianyu_live",
+        "default": true
+    }
+]

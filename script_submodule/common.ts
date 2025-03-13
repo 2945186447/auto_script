@@ -125,3 +125,7 @@ export function wx_push(title: string, content: string) {
         return false
     }
 }
+
+export function clickWidgetClickable() {
+
+}
