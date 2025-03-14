@@ -3,9 +3,9 @@
         "scriptFile": "dist/device_test.js"
     },
     "name": "zhuan_mi",
-    "scriptId": "676f5dd8355b3c9c2fe16f9a",
+    "scriptId": "6768bb37bc5d4b0df7bc18da",
     "executeRobot": {
-        "_id": "6791e0f7738194e0cbd5420e",
+        "_id": "67d3930fa85eb3a927dc0405",
         "name": "IQOO"
     }
 }
