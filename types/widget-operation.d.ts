@@ -726,6 +726,8 @@ declare module 'widget-operation' {
          * @description: `UiObject` 表示一个控件，可以通过这个对象获取到控件的属性，也可以对控件进行点击、长按等操作。获取一个 `UiObject` 通常通过选择器的 `findOne()` , `findOnce()` 等函数，也可以通过 `UiCollection` 来获取，或者通过 `UiObject.child()` , `UiObject.parent()` 等函数来获取一个控件的子控件或父控件。
          */
         class UiObject {
+
+            visibleToUser(): UiObject;
             getName(): boolean
             indexInParent(): number;
             desc(): string;

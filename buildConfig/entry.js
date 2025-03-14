@@ -5,7 +5,7 @@ const path = require('path');
 const entryFiles = {};
 
 const exclude = [
-    'tiktok_slider'
+    'device_test'
 ];
 
 const filesList = fs.readdirSync(path.resolve(__dirname, '../src'));

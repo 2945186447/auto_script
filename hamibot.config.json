@@ -1,11 +1,11 @@
 {
     "fileMark": {
-        "scriptFile": "dist/tiktok_slider.js"
+        "scriptFile": "dist/device_test.js"
     },
     "name": "zhuan_mi",
-    "scriptId": "677c8a0cd22b111f8b9e542f",
+    "scriptId": "676f5dd8355b3c9c2fe16f9a",
     "executeRobot": {
-        "_id": "677ddfb8563b5ef63a033c6f",
+        "_id": "6791e0f7738194e0cbd5420e",
         "name": "IQOO"
     }
 }
