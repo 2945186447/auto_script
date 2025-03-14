@@ -4,11 +4,12 @@ export function randomInteger(min: number = 1000, max: number = 3000): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 export function _click(
-    widget: UiSelector,
+    widget: UiSelector | null,
     type: 'clickable' | 'coordinate' = 'coordinate',
     timeout: number = 1000
 ) {
     try {
+        if (!widget) return null;
         const _type = type || 'coordinate'
         const _timeout = timeout || 1000
         const _widget = widget.findOne(_timeout)
@@ -210,3 +211,41 @@ export function findNext(
     }
     return targetUiobject;
 }
+
+
+
+
+
+export function querySelector(selector: string, args?: UiObject_attribute, mode: 'strict' | 'normal' | 'regular' = 'normal', timeout: number = 1): UiObject | null {
+    let widget: UiObject | null = null
+    let widget_selector: UiSelector | null = null
+    if (selector.startsWith("id=")) {
+        const ids = selector.replace(/^id=/, '')
+        widget_selector = mode === "strict" ? id(ids) : idContains(ids)
+    }
+    else if (selector.startsWith("className=")) {
+        const classNames = selector.replace(/^className=/, '')
+        widget_selector = className(classNames)
+    }
+    else if (selector.startsWith("desc=")) {
+        const descs = selector.replace(/^desc=/, '')
+        widget_selector = mode === "strict" ? desc(descs) : descContains(descs)
+    }
+    else {
+        const textordesc = selector;
+        widget_selector = mode === "strict" ? text(textordesc) : textContains(textordesc)
+    }
+    for (const key in args) {
+        widget = widget_selector[key](args[key]);
+    }
+    if (!widget_selector) return null;
+    widget = widget_selector.visibleToUser().findOne(timeout)
+    console.log(widget_selector);
+    return widget
+}
+export function querySelectorAll(selector: UiSelector | null): UiCollection | null {
+    if (!selector) return null;
+    const widget = selector.visibleToUser().find();
+    return widget
+}
+
