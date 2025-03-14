@@ -39,3 +39,8 @@ interface UiObject_attribute {
     packageName?: string,
     password?: boolean,
 }
+
+declare module '*.png' {
+    const content: string;
+    export default content;
+}
