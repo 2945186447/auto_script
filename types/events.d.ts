@@ -120,6 +120,7 @@ declare module 'events' {
     }
 
     class Events extends EventEmitter {
+        onToast(cb: (toast: UiObject) => void): void;
         /**
          * @description: 创建一个新的 `EventEmitter` 。这个 `EventEmitter` 没有内置任何事件。
          * @return {EventEmitter} 新创建的 `EventEmitter` 对象。

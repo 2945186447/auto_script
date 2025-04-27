@@ -237,7 +237,7 @@ declare module 'http' {
         /**
          * @description: HTTP 请求方法。
          */
-        method: (
+        method?: (
             'GET' |
             'POST' |
             'PUT' |
