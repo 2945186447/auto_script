@@ -5,7 +5,7 @@ const path = require('path');
 const entryFiles = {};
 
 const exclude = [
-    'device_test'
+    'htx'
 ];
 
 const filesList = fs.readdirSync(path.resolve(__dirname, '../src'));

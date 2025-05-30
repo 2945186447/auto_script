@@ -1,11 +1,11 @@
 {
     "fileMark": {
-        "scriptFile": "dist/device_test.js"
+        "scriptFile": "dist/htx.js"
     },
     "name": "zhuan_mi",
-    "scriptId": "6768bb37bc5d4b0df7bc18da",
+    "scriptId": "67be70abff67b939f9800cae",
     "executeRobot": {
-        "_id": "67d3930fa85eb3a927dc0405",
+        "_id": "68313106188c503ca4202c9c",
         "name": "IQOO"
     }
 }
