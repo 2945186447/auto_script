@@ -4,7 +4,13 @@ const path = require("path");
 
 const entryFiles = {};
 
+<<<<<<< HEAD
 const exclude = ["message"];
+=======
+const exclude = [
+    'htx'
+];
+>>>>>>> b14a8bfb9918244cce2c4f7f2ed284a7b3c4e976
 
 const filesList = fs.readdirSync(path.resolve(__dirname, "../src"));
 

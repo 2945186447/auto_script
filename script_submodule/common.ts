@@ -211,6 +211,7 @@ export function querySelector(selector: string, args?: UiObject_attribute, mode:
         widget_selector = mode === "strict" ? text(textordesc) : textContains(textordesc)
     }
     for (const key in args) {
+        //@ts-ignore
         widget = widget_selector[key](args[key]);
     }
     if (!widget_selector) return null;
@@ -240,6 +241,7 @@ export function querySelectorAll(selector: string, args?: UiObject_attribute, mo
         widget_selector = mode === "strict" ? text(textordesc) : textContains(textordesc)
     }
     for (const key in args) {
+        //@ts-ignore
         widget = widget_selector[key](args[key]);
     }
     if (!widget_selector) return null;
@@ -248,5 +250,13 @@ export function querySelectorAll(selector: string, args?: UiObject_attribute, mo
         widget = widget_selector.visibleToUser().find()
     }
     return widget
+}
+
+export function clickIfWidgetClickable(widget: UiObject | null): boolean {
+    try {
+        if (!widget) return false
+        return widget.click();
+    } catch (error) { }
+    return false;
 }
 
