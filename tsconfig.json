@@ -5,6 +5,11 @@
         ],
         "target": "ES5",
         "module": "ES2015",
+        "baseUrl": "./",
+        "paths": {
+            "@": ["src/*"],
+            "@script_submodule/*": ["script_submodule/*"]
+        },
         "strict": true,
         "typeRoots": [
             "**/types",
@@ -16,5 +21,6 @@
         "noImplicitAny": false,
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
-    }
+    },
+    "include": ["src","script_submodule","**/types","node_modules/@types"],
 }

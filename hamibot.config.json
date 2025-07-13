@@ -1,15 +1,19 @@
 {
     "fileMark": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "configFile": "src/device_test/config.json",
         "scriptFile": "dist/device_test.js"
 =======
         "scriptFile": "dist/tiktok_slider.js"
+=======
+        "scriptFile": "dist/device_test.js"
+>>>>>>> d0cb9801b334531b7d894311455afc086695db83
     },
     "name": "zhuan_mi",
-    "scriptId": "677c8a0cd22b111f8b9e542f",
+    "scriptId": "6768bb37bc5d4b0df7bc18da",
     "executeRobot": {
-        "_id": "677ddfb8563b5ef63a033c6f",
+        "_id": "67d3930fa85eb3a927dc0405",
         "name": "IQOO"
 >>>>>>> effc45cd7d42d2030cf2cbb58fd99e98736938a4
     }

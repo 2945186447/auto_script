@@ -34,6 +34,22 @@ module.exports = {
                     },
                     'ts-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif)$/i,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            // 当图片大小小于 8KB 时，将图片转换为 Base64 编码
+                            limit: 8 * 1024 * 1024,
+                            // 超过 limit 大小的图片将使用 file-loader 处理
+                            fallback: 'file-loader',
+                            // 输出文件的名称和路径
+                            name: 'images/[name].[hash:8].[ext]'
+                        }
+                    }
+                ],
             }
         ]
     },
@@ -41,6 +57,11 @@ module.exports = {
         new CleanWebpackPlugin()
     ],
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
+        alias: {
+            // 将 @ 配置为指向 src 目录
+            '@script_submodule': path.resolve(__dirname, "../script_submodule"),
+            '@': path.resolve(__dirname, '../src'),
+        }
     }
 }

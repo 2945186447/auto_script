@@ -350,7 +350,7 @@ declare module 'images' {
          * @param {string} base64 图片的 Base64 数据
          * @return {Image | null} 解码 Base64 数据并返回解码后的图片 `Image` 对象。如果 base64 无法解码则返回 `null` 。
          */
-        fromBase64(base64: string): Image | null;
+        fromBase64(base64: string): Image;
 
         /**
          * @description: 把图片编码为 base64 数据并返回。
@@ -1203,7 +1203,7 @@ declare module 'images' {
         recycle(): void;
     }
 
-    class CaptureImage extends BaseImage {}
+    class CaptureImage extends BaseImage { }
 
     class Point {
         /**

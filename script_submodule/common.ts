@@ -3,58 +3,35 @@
 export function randomInteger(min: number = 1000, max: number = 3000): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-export function _click(
-    widget: UiSelector,
-    type: 'clickable' | 'coordinate' = 'coordinate',
-    timeout: number = 1000
-) {
+
+export function clickIfWidgetExists(widget: UiObject | null, sleep: number = 1000): boolean {
     try {
-        const _type = type || 'coordinate'
-        const _timeout = timeout || 1000
-        const _widget = widget.findOne(_timeout)
-        if (_widget) {
-            const _widgetText = _widget.getText()
-            if (_type === 'coordinate') {
-                if (_widgetText) {
-                    console.log("点击文字：" + _widgetText);
-                }
-                const x = randomInteger(_widget.bounds().centerX() - 3, _widget.bounds().centerX() + 3)
-                const y = randomInteger(_widget.bounds().centerY() - 3, _widget.bounds().centerY() + 3)
-                return click(x, y) && randomSleep()
+        if (!widget) return false
+        if (widget.visibleToUser()) {
+            let x = randomInteger(widget.bounds().centerX() - 3, widget.bounds().centerX() + 3)
+            let y = randomInteger(widget.bounds().centerY() - 3, widget.bounds().centerY() + 3)
+            if (widget.text() || widget.desc()) {
+                console.log("点击" + widget.text() || widget.desc());
+            }
+            if (widget.clickable && widget.click()) {
+                return true
+            }
+            if (click(x, y)) {
+                console.log("坐标点击", x, y);
+                randomSleep(sleep)
+                return true
             }
             else {
-                console.log("点击文字：" + _widgetText);
-                return _widget.click() && randomSleep()
+                executeShell('input tap ' + x + ' ' + y)
+                console.log("shell点击");
+                randomSleep(sleep)
+                return true
             }
         }
-    } catch (error) {
-        console.log(error);
     }
-    return false && randomSleep()
-}
-
-export function _ubclick(
-    widget: UiObject | null,
-    type: 'clickable' | 'coordinate' = 'coordinate',
-) {
-    try {
-        const _type = type || 'coordinate'
-        const _widget = widget
-        if (_widget) {
-            if (_type === 'coordinate') {
-                const x = randomInteger(_widget.bounds().centerX() - 3, _widget.bounds().centerX() + 3)
-                const y = randomInteger(_widget.bounds().centerY() - 3, _widget.bounds().centerY() + 3)
-                return click(x, y) && randomSleep()
-            }
-            else {
-
-                return _widget.click() && randomSleep()
-            }
-        }
-    } catch (error) {
-        console.log(error);
-    }
-    return false && randomSleep()
+    catch (error) { }
+    randomSleep(sleep)
+    return false;
 }
 
 export function _swipe(
@@ -103,7 +80,7 @@ export function wakeUpHonor(password: string): boolean {
         _swipe("up", undefined, '0.3-0.7', 1)
         if (text("紧急呼叫").visibleToUser().findOne(30 * 1000)) {
             for (let i = 0; i < password.split("").length; i++) {
-                _click(text(password[i]));
+                clickIfWidgetExists(querySelector(password[i]));
             }
             return true
         }
@@ -117,7 +94,7 @@ export function clearRecent(): boolean {
     const clearbox = idContains("clearbox").visibleToUser().findOne(30 * 1000)
     if (clearbox) {
         randomSleep(1000, 1500)
-        return _click(idContains("clearbox")) || false
+        return clickIfWidgetExists(querySelector("id=clearbox")) || false
     }
     return false && randomSleep(1000, 1500)
 }
@@ -210,3 +187,66 @@ export function findNext(
     }
     return targetUiobject;
 }
+
+
+
+
+export function querySelector(selector: string, args?: UiObject_attribute, mode: 'strict' | 'normal' | 'regular' = 'normal', timeout: number = 1, visibleToUser: boolean = true): UiObject | null {
+    let widget: UiObject | null = null
+    let widget_selector: UiSelector | null = null
+    if (selector.startsWith("id=")) {
+        const ids = selector.replace(/^id=/, '')
+        widget_selector = mode === "strict" ? id(ids) : idContains(ids)
+    }
+    else if (selector.startsWith("className=")) {
+        const classNames = selector.replace(/^className=/, '')
+        widget_selector = className(classNames)
+    }
+    else if (selector.startsWith("desc=")) {
+        const descs = selector.replace(/^desc=/, '')
+        widget_selector = mode === "strict" ? desc(descs) : descContains(descs)
+    }
+    else {
+        const textordesc = selector;
+        widget_selector = mode === "strict" ? text(textordesc) : textContains(textordesc)
+    }
+    for (const key in args) {
+        widget = widget_selector[key](args[key]);
+    }
+    if (!widget_selector) return null;
+    widget = widget_selector.findOne(timeout)
+    if (visibleToUser) {
+        widget = widget_selector.visibleToUser().findOne(timeout)
+    }
+    return widget
+}
+export function querySelectorAll(selector: string, args?: UiObject_attribute, mode: 'strict' | 'normal' | 'regular' = 'normal', visibleToUser: boolean = true,): UiCollection | null {
+    let widget: UiCollection | null = null
+    let widget_selector: UiSelector | null = null
+    if (selector.startsWith("id=")) {
+        const ids = selector.replace(/^id=/, '')
+        widget_selector = mode === "strict" ? id(ids) : idContains(ids)
+    }
+    else if (selector.startsWith("className=")) {
+        const classNames = selector.replace(/^className=/, '')
+        widget_selector = className(classNames)
+    }
+    else if (selector.startsWith("desc=")) {
+        const descs = selector.replace(/^desc=/, '')
+        widget_selector = mode === "strict" ? desc(descs) : descContains(descs)
+    }
+    else {
+        const textordesc = selector;
+        widget_selector = mode === "strict" ? text(textordesc) : textContains(textordesc)
+    }
+    for (const key in args) {
+        widget = widget_selector[key](args[key]);
+    }
+    if (!widget_selector) return null;
+    widget = widget_selector.find()
+    if (visibleToUser) {
+        widget = widget_selector.visibleToUser().find()
+    }
+    return widget
+}
+
